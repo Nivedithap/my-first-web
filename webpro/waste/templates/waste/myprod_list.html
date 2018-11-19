@@ -1,0 +1,35 @@
+<html>
+<body>
+    <div style="background-color: bisque">
+    <center><h1>E-management</h1></center>
+
+       <h4> <a href="{% url 'waste:logout' %}" style="float:right">Logout</a></h4>
+    </div>
+<p>Hello  {{request.user}}</p>
+    <center>
+<h3><a href='addprod/'>Add a product</a></h3>
+</center>
+{% for prod in latest_prods %}
+ {% if user == prod.user %}
+<div style="border: 1px solid black;margin:30px;padding-left:10px;background-color:wheat">
+
+
+
+
+{% if prod.picture %}
+<img src={{prod.picture.url}} style="height:100px;width:200px;padding-top:5px"/>
+{% endif %}
+<p><b>Product Name:</b>{{prod.product_name}}</p>
+ {% if prod.activate %}
+        <a href="deactivate/{{prod.id}}">     Deactivate</a>
+        {% else %}
+    <a href="activate/{{prod.id}}">   activate</a>
+       
+        {% endif %}
+
+    </div>
+{% endif %}
+
+{% endfor %}
+</body>
+</html>

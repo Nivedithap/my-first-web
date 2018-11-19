@@ -1,0 +1,25 @@
+<html>
+<body>
+    <center>
+   <center> <h1 style="background-color: bisque">E-management</h1></center>
+        </center>
+<p>Hello{{request.user}}</p>
+{% for prod in latest_prods %}
+{% if prod.activate %}
+<div style="border: 1px solid black;margin:30px;padding-left:10px;background-color:wheat">
+{% if prod.picture %}
+<img src={{prod.picture.url}} style="padding-top:5px"/>
+{% endif %}
+<p style="color:black"><b>Product Name:</b>{{prod.product_name}}</p>
+<p style="color: brown"><b>Uploaded By:</b>{{prod.user}}</p>
+<p style="color: darkblue"><b>Email:</b>{{prod.user.email}}</p>
+
+
+
+
+</div>
+{% endif %}
+{% endfor %}
+
+</body>
+</html>
